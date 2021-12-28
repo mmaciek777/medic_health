@@ -77,5 +77,18 @@ public class UserListBB {
 		UserDAO.remove(user);
 		return PAGE_STAY_AT_THE_SAME;
 	}
+	
+	public String contact() {
+		return "contact"; 
+	}
+	public String account() {
+		return "account"; 
+	}
+	public String login() {
+		return "login"; 
+	}
+	public String info() {
+		return "info"; 
+	}
 	 
 }

@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	
+		<header id="header">
+					<h1 id="logo"><a href="index.xhtml">MedicHealth</a></h1>
+					<nav id="nav">
+						<ul>
+                             <li><a href="index.xhtml">Strona główna</a></li>
+							
+							<li><a href="#">Szczepienia</a>
+								<ul>
+									<li><a href="#">Zapisy</a></li>
+									<li><a href="#">Dostępne szczepionki</a></li>
+									<li><a href="#">Laboratoria</a></li>
+								</ul>
+							</li>
+							
+                            <li><a href="#">Panel lekarza</a></li>
+                            <li><p:commandButton value="Kontakt" action="#{UserListBB.contact()}" style=" margin-top:1em;"/></li>
+                            <li><p:commandButton value="Konto" action="#{UserListBB.account()}" style=" margin-top:1em;"/></li>
+                            <li><p:commandButton value="Zaloguj" action="#{UserListBB.login()}" style=" margin-top:1em;"/></li>
+                                                           
+                                                        
+						</ul>
+					</nav>
+				</header>
+	
+
+</ui:composition>
