@@ -21,7 +21,18 @@
  -->
 <ui:define name="content">
 
-	<p style="margin-top: 2em; text-align:center;">LOGOWANIE</p>
+	<h3><p style="margin-top: 2em;">LOGOWANIE</p></h3>
+	
+				<fieldset>
+                        <label for="login" class="id_label">LOGIN: </label>
+                        <input id="login" style="width:20%;" type="text" name="login" />
+
+                        <label for="pass" class="id_label">HASŁO: </label>
+                        <input id="pass" style="width:20%;" type="password" name="pass" /><br />
+
+                          <!-- Test -->  <p:button outcome="login.xhtml" style=" margin-top:1em; margin-right: 4em; font-size:19px;" value="ZALOGUJ"/>
+                          <!-- Test -->  <p:button outcome="register.xhtml" style=" margin-top:1em; font-size:19px;" value="REJESTRACJA"/>
+               </fieldset>
 	<!--  </h:body> -->
 	</ui:define>
 </ui:composition>

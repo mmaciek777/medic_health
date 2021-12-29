@@ -59,7 +59,7 @@ public class UserEditBB implements Serializable {
 		}
 
 	}
-
+/*
 	public String saveData() {
 		// no Person object passed
 		if (loaded == null) {
@@ -83,4 +83,5 @@ public class UserEditBB implements Serializable {
 
 		return PAGE_USER_LIST;
 	}
+	*/
 }

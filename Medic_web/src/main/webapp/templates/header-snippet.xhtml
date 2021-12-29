@@ -11,18 +11,13 @@
 						<ul>
                              <li><a href="index.xhtml">Strona główna</a></li>
 							
-							<li><a href="#">Szczepienia</a>
-								<ul>
-									<li><a href="#">Zapisy</a></li>
-									<li><a href="#">Dostępne szczepionki</a></li>
-									<li><a href="#">Laboratoria</a></li>
-								</ul>
-							</li>
-							
-                            <li><a href="#">Panel lekarza</a></li>
-                            <li><p:commandButton value="Kontakt" action="#{UserListBB.contact()}" style=" margin-top:1em;"/></li>
-                            <li><p:commandButton value="Konto" action="#{UserListBB.account()}" style=" margin-top:1em;"/></li>
-                            <li><p:commandButton value="Zaloguj" action="#{UserListBB.login()}" style=" margin-top:1em;"/></li>
+							<li><a href="szczepienia.xhtml">Szczepienia</a></li>
+                            <li><a href="panel.xhtml">Panel lekarza</a></li>
+                            <li><a href="contact.xhtml">Kontakt</a></li>
+                            
+                            
+                            <li><p:button outcome="account.xhtml" style=" margin-top:1em; font-size:19px;" value="Konto"/></li>
+                            <li><p:button outcome="login.xhtml" style=" margin-top:1em; font-size:19px;" value="Zaloguj"/></li>
                                                            
                                                         
 						</ul>

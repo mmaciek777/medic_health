@@ -3453,6 +3453,7 @@ input, select, textarea {
 		background-attachment: fixed;
 		background-position: center center;
 		background-size: cover;
+		background-image: url(webapp/resources/images/nurse.jpg);
 		box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
 		min-height: 100vh;
 		position: relative;
@@ -3461,6 +3462,7 @@ input, select, textarea {
                 
 	}
 
+		/*
 		#banner:before {
 			content: '';
 			display: inline-block;
@@ -3468,10 +3470,10 @@ input, select, textarea {
 			vertical-align: middle;
 			width: 1%;
 		}
-
+	    */
 		#banner:after {
 			
-            background-image: url(images/nurse.jpg);
+            
 			/*
 			background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(167, 167, 167, 0.95));
 			

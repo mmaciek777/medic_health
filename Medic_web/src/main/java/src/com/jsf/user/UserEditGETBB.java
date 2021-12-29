@@ -33,7 +33,7 @@ public class UserEditGETBB implements Serializable {
 	public User getUser() {
 		return User;
 	}
-
+	/*
 	public void onLoad() throws IOException {
 		if (!context.isPostback()) {
 			if (!context.isValidationFailed() && getIdUser() != null) {
@@ -51,7 +51,7 @@ public class UserEditGETBB implements Serializable {
 		}
 
 	}
-
+	
 	public String saveData() {
 		// no Person object passed
 		if (loaded == null) {
@@ -75,4 +75,5 @@ public class UserEditGETBB implements Serializable {
 
 		return PAGE_USER_LIST;
 	}
+	*/
 }
