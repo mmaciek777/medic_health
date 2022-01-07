@@ -8,21 +8,23 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/templates/main-template.xhtml">
-
-<h:head>
-	
-	<ui:define name="title">
+<ui:composition template="/templates/page-template.xhtml">
+ <ui:define name="title">
 		Medic-Health - Konto
 	</ui:define>
-</h:head>
-<!-- 
-<h:body style="background-color: #eee; margin: 0.5em;">
- -->
 <ui:define name="content">
 
-	<p style="margin-top: 2em; text-align:center;">KONTO</p>
-	<!--  </h:body> -->
+	
+	
+            <h2><p style="padding-top: 3em; text-align:center;">Konto</p></h2>
+           <p style="text-align:center;">Imię:</p>
+           <p style="text-align:center;">Nazwisko:</p>
+           <p style="text-align:center;">Email:</p>
+           <p style="text-align:center;">Data urodzenia:</p>
+           <p style="text-align:center;">Miasto:</p>
+              
+      
+	
 	</ui:define>
 </ui:composition>
 </html>

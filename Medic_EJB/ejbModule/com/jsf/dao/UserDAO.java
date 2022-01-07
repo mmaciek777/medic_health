@@ -1,5 +1,6 @@
 package com.jsf.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,7 @@ public class UserDAO {
 		return em.find(User.class, id);
 	}
 	
+	/*	Wyswietlanie listy
 	public List<User> getFullList() {
 		List<User> list = null;
 
@@ -45,7 +47,7 @@ public class UserDAO {
 
 		return list;
 	}
-
+	
 	public List<User> getList(Map<String, Object> searchParams) {
 		List<User> list = null;
 
@@ -86,6 +88,36 @@ public class UserDAO {
 		}
 
 		return list;
+		
+	}*/
+	
+		public User getUserFromDatabase(String login, String has³o) {
+			
+			User u = null;
+			
+			if (login.equals(login) && has³o.equals(has³o)) {
+				u = new User();
+			}
+			
+			return u;
+		}
+
+	// simulate retrieving roles of a User from DB
+	public List<String> getUserRolesFromDatabase(User user) {
+		
+		ArrayList<String> roles = new ArrayList<String>();
+		
+		if (user.getLogin().equals("user1")) {
+			roles.add("user");
+		}
+		if (user.getLogin().equals("user2")) {
+			roles.add("doctor");
+		}
+		if (user.getLogin().equals("maciek")) {
+			roles.add("admin");
+		}
+		
+		return roles;
 	}
 
 }

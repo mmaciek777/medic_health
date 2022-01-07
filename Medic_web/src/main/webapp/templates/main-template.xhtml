@@ -9,10 +9,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="title">Medic-Health</ui:insert></title>
 	
-	
-	<!-- <h:outputStylesheet name="css/style.css" library="template" /> -->
-	
-	
 	<h:outputStylesheet name="assets/css/main.css"/>
                 
 	<noscript><h:outputStylesheet name="assets/css/noscript.css"/></noscript>
@@ -23,21 +19,33 @@
 </h:head>
 
 <h:body>
+			
+
 	<div id="page_wrapper">
 		<ui:insert name="header">
-			<div id="header" class="box bottom-space">
+			<div id="header">
 				<ui:include src="/templates/header-snippet.xhtml" />
 			</div>
 		</ui:insert>
-		<div id="content" class="box bottom-space">
+		<div id="content">
 			<ui:insert name="content"></ui:insert>
 		</div>
 		<ui:insert name="footer">
-			<div id="footer" class="box bottom-space">
+			<div id="footer" style="height:50px;">
 				<ui:include src="/templates/footer-snippet.xhtml" />
 			</div>
 		</ui:insert>
 	</div>
+	
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			
 </h:body>
 
 </html>

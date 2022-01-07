@@ -5,24 +5,19 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 	
-		<header id="header">
-					<h1 id="logo"><a href="index.xhtml">MedicHealth</a></h1>
-					<nav id="nav">
-						<ul>
-                             <li><a href="index.xhtml">Strona główna</a></li>
-							
-							<li><a href="szczepienia.xhtml">Szczepienia</a></li>
-                            <li><a href="panel.xhtml">Panel lekarza</a></li>
-                            <li><a href="contact.xhtml">Kontakt</a></li>
-                            
-                            
-                            <li><p:button outcome="account.xhtml" style=" margin-top:1em; font-size:19px;" value="Konto"/></li>
-                            <li><p:button outcome="login.xhtml" style=" margin-top:1em; font-size:19px;" value="Zaloguj"/></li>
-                                                           
-                                                        
-						</ul>
-					</nav>
-				</header>
+	<header id="header">
+		<h1 id="logo"><a href="index.xhtml">MedicHealth</a></h1>
+			<nav id="nav">
+				<h:form>
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="index.xhtml?faces-redirect=true" value="Strona główna" /> 
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="szczepienia.xhtml?faces-redirect=true" value="Szczepienia" />  
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="panel.xhtml?faces-redirect=true" value="Panel lekarza" /> 
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="contact.xhtml?faces-redirect=true" value="Kontakt" /> 
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="account.xhtml?faces-redirect=true" value="Konto" /> 
+					<p:button style="margin-top:1em;font-size:19px;margin-left:2em;" action="login.xhtml?faces-redirect=true" value="Logowanie" /> 
+				</h:form>
+			</nav>
+	</header>
 	
 
 </ui:composition>
