@@ -16,7 +16,7 @@ public class Skierowanie implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_Skierowanie;
+	private int idSkierowanie;
 
 	@Temporal(TemporalType.DATE)
 	private Date termin_Dawka_Druga;
@@ -45,12 +45,12 @@ public class Skierowanie implements Serializable {
 	public Skierowanie() {
 	}
 
-	public int getId_Skierowanie() {
-		return this.id_Skierowanie;
+	public Integer getIdSkierowanie() {
+		return this.idSkierowanie;
 	}
 
-	public void setId_Skierowanie(int id_Skierowanie) {
-		this.id_Skierowanie = id_Skierowanie;
+	public void setIdSkierowanie(Integer idSkierowanie) {
+		this.idSkierowanie = idSkierowanie;
 	}
 
 	public Date getTermin_Dawka_Druga() {

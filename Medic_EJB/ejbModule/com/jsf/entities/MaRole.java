@@ -20,6 +20,7 @@ public class MaRole implements Serializable {
 
 	//bi-directional many-to-one association to Rola
 	@ManyToOne
+	@JoinColumn(name="Rola_id_Rola")
 	private Rola rola;
 
 	//bi-directional many-to-one association to User
@@ -30,11 +31,11 @@ public class MaRole implements Serializable {
 	public MaRole() {
 	}
 
-	public int getIdMaRole() {
+	public Integer getIdMaRole() {
 		return this.idMaRole;
 	}
 
-	public void setIdMaRole(int idMaRole) {
+	public void setIdMaRole(Integer idMaRole) {
 		this.idMaRole = idMaRole;
 	}
 

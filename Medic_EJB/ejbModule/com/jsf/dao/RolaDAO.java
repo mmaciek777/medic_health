@@ -1,18 +1,21 @@
 package com.jsf.dao;
 
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.jsf.entities.Rola;
 
 @Stateless
 public class RolaDAO {
-
+	
 	@PersistenceContext
 	EntityManager em;
-
+	
 	public void create(Rola rola) {
 		em.persist(rola);
 	}
@@ -25,7 +28,7 @@ public class RolaDAO {
 		em.remove(em.merge(rola));
 	}
 
-	public Rola find(Object id) {
+	public Rola get(Object id) {
 		return em.find(Rola.class, id);
 	}
 }

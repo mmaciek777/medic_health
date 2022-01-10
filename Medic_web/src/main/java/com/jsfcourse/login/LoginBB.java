@@ -17,8 +17,8 @@ import com.jsf.entities.User;
 @Named
 @RequestScoped
 public class LoginBB {
-	private static final String PAGE_MAIN = "/index?faces-redirect=true";
-	private static final String PAGE_LOGIN = "/login";
+	private static final String PAGE_MAIN = "/public/index?faces-redirect=true";
+	private static final String PAGE_LOGIN = "/pages/login";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String login;

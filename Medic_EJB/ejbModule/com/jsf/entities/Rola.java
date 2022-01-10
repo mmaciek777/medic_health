@@ -17,7 +17,7 @@ public class Rola implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_Rola;
+	private int idRola;
 
 	private String czy_rola_aktywna;
 
@@ -36,12 +36,12 @@ public class Rola implements Serializable {
 	public Rola() {
 	}
 
-	public int getId_Rola() {
-		return this.id_Rola;
+	public Integer getIdRola() {
+		return this.idRola;
 	}
 
-	public void setId_Rola(int id_Rola) {
-		this.id_Rola = id_Rola;
+	public void setIdRola(Integer idRola) {
+		this.idRola = idRola;
 	}
 
 	public String getCzy_rola_aktywna() {

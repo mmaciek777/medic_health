@@ -4,7 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
-	<persistence-unit name="medic-simplePU"	transaction-type="JTA">
+	<persistence-unit name="jsfcourse-simplePU"	transaction-type="JTA">
 		<jta-data-source>java:/jsfcourse/MedicHealth</jta-data-source>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>

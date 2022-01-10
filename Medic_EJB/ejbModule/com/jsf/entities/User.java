@@ -13,8 +13,6 @@ import java.util.List;
 @Entity
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
-	
-	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -73,11 +71,11 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public int getIdUser() {
+	public Integer getIdUser() {
 		return this.idUser;
 	}
 
-	public void setIdUser(int idUser) {
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
 
@@ -282,6 +280,5 @@ public class User implements Serializable {
 
 		return skierowanies2;
 	}
-	
-	
+
 }

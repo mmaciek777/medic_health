@@ -6,16 +6,18 @@
 
 	
 	<header id="header">
-		<h1 id="logo"><a href="index.xhtml">MedicHealth</a></h1>
+		<h:form>
+			<h1 id="logo"><h:commandLink style="font-size:19px;" action="/public/index.xhtml?faces-redirect=true" value="MedicHealth" /> </h1>
+		 </h:form>
 			<nav id="nav">
-				<h:form>
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="index.xhtml?faces-redirect=true" value="Strona główna" /> 
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="szczepienia.xhtml?faces-redirect=true" value="Szczepienia" />  
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="panel.xhtml?faces-redirect=true" value="Panel lekarza" /> 
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="contact.xhtml?faces-redirect=true" value="Kontakt" /> 
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="account.xhtml?faces-redirect=true" value="Konto" /> 
-					<p:button style="margin-top:1em;font-size:19px;margin-left:2em;" action="login.xhtml?faces-redirect=true" value="Logowanie" /> 
-				</h:form>
+			   <h:form>
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/index.xhtml?faces-redirect=true" value="Strona główna" /> 
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/szczepionkaList.xhtml?faces-redirect=true" value="Szczepienia" />  
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/doctor/panel.xhtml?faces-redirect=true" value="Panel lekarza" /> 
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/contact.xhtml?faces-redirect=true" value="Kontakt" /> 
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/user/account.xhtml?faces-redirect=true" value="Konto" /> 
+					<p:commandButton style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/login.xhtml?faces-redirect=true" value="Logowanie" /> <!-- HREF ZMIEN NA ACTION POTEM -->
+			   </h:form>
 			</nav>
 	</header>
 	
