@@ -11,7 +11,7 @@
 <ui:composition template="/templates/page-template.xhtml">
 
  <ui:define name="title">
-		Medic-Health - Szczepienia
+		Medic-Health - Panel
 	</ui:define>
 <ui:define name="content">
 
@@ -20,8 +20,8 @@
 		style="margin-bottom: 1em; margin-top:5em;">
 		<h:form>
 			<h:panelGrid columns="1" cellpadding="5">
-				<h:outputLabel value="Nazwa_szczepionki:" />
-				<p:inputText value="#{szczepionkaListBB.nazwa_szczepionki}" />
+				<h:outputLabel value="Nazwisko:" />
+				<p:inputText value="#{panelListBB.nazwisko}" />
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
 		</h:form>
@@ -31,33 +31,57 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">
 
-		<p:commandButton rendered="#{remoteClient.details.nazwa_roli == 'Doktor'}" value="Dodaj nową szczepionkę"
-			action="#{szczepionkaListBB.newSzczepionka()}" style="margin-bottom:1em;"/>
+		
+		<p:dataTable value="#{panelListBB.list}" var="p">
 
-		<p:dataTable value="#{szczepionkaListBB.list}" var="p">
-
-			<p:column >
+			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Nazwa Szczepionki" />
+					<h:outputText value="Imie" />
+				</f:facet>
+				<h:outputText value="#{p.imie}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Nazwisko" />
+				</f:facet>
+				<h:outputText value="#{p.nazwisko}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Szczepionka" />
 				</f:facet>
 				<h:outputText value="#{p.nazwa_szczepionki}" />
 			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Pierwsza dawka" />
+				</f:facet>
+				<h:outputText value="#{p.termin_dawka_pierwsza}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Druga dawka" />
+				</f:facet>
+				<h:outputText value="#{p.termin_dawka_druga}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Trzecia dawka" />
+				</f:facet>
+				<h:outputText value="#{p.termin_dawka_trzecia}" />
+			</p:column>
 
-			<p:column rendered="#{remoteClient.details.nazwa_roli == 'Doktor'}">
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Opcje" />
 				</f:facet>
 
 				<p:commandButton value="Edytuj" style="margin-right:1em;"
-					action="#{szczepionkaListBB.editSzczepionka(p)}" />
+					action="#{panelListBB.editPanel(p)}" />
 
-				<p:commandButton value="Usuń" style="margin-right:1em;"
-					action="#{szczepionkaListBB.deleteSzczepionka(p)}" update="@form" />
-
-				<!-- <p:button outcome="szczepionkaEditGET" value="Edytuj (GET)">
-					<f:param name="p" value="#{p.idSzczepionka}" />
+				<p:button outcome="panelEditGET" value="Edytuj (GET)">
+					<f:param name="p" value="#{p.idSkierowanie}" />
 				</p:button>
-				 -->
 			</p:column>
 
 		</p:dataTable>

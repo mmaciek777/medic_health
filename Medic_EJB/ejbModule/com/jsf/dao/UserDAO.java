@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.NoResultException;
 
 import com.jsf.entities.User;
 
@@ -32,91 +33,24 @@ public class UserDAO {
 		return em.find(User.class, id);
 	}
 	
-	/*	Wyswietlanie listy
-	public List<User> getFullList() {
-		List<User> list = null;
-
-		Query query = em.createQuery("select p from Uzytkownik p");
-
+	
+	public User getUserFromDatabase(String login, String has這) {
+		
+		User user = null;
 		try {
-			list = query.getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
+		
+        Query query = em.createQuery("select u from User u where u.login like :login and u.has這 like :has這 ");
+        query.setParameter("login", login);
+        query.setParameter("has這", has這);
+        
+        User user2 = (User) query.getSingleResult();
+        
+        return user2;
 		}
-
-		return list;
+		catch(NoResultException nre) {
+			
+		}
+		return user;
 	}
 	
-	public List<User> getList(Map<String, Object> searchParams) {
-		List<User> list = null;
-
-		// 1. Build query string with parameters
-		String select = "select p ";
-		String from = "from Uzytkownik p ";
-		String where = "";
-		String orderby = "order by p.nazwisko asc, p.imie";
-
-		// search for surname
-		String nazwisko = (String) searchParams.get("nazwisko");
-		if (nazwisko != null) {
-			if (where.isEmpty()) {
-				where = "where ";
-			} else {
-				where += "and ";
-			}
-			where += "p.nazwisko like :nazwisko ";
-		}
-		
-		// ... other parameters ... 
-
-		// 2. Create query object
-		Query query = em.createQuery(select + from + where + orderby);
-
-		// 3. Set configured parameters
-		if (nazwisko != null) {
-			query.setParameter("nazwisko", nazwisko+"%");
-		}
-
-		// ... other parameters ... 
-
-		// 4. Execute query and retrieve list of Person objects
-		try {
-			list = query.getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return list;
-		
-	}*/
-	
-		public User getUserFromDatabase(String login, String has這) {
-			
-			User u = null;
-			
-			if (login.equals(login) && has這.equals(has這)) {
-				u = new User();
-			}
-			
-			return u;
-		}
-
-	// simulate retrieving roles of a User from DB
-	public List<String> getUserRolesFromDatabase(User user) {
-		
-		ArrayList<String> roles = new ArrayList<String>();
-		
-		if (user.getLogin().equals("user1")) {
-			roles.add("user");
-		}
-		if (user.getLogin().equals("user2")) {
-			roles.add("doctor");
-		}
-		if (user.getLogin().equals("maciek")) {
-			roles.add("admin");
-		}
-		
-		return roles;
-	}
-
 }

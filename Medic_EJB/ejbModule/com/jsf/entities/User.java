@@ -17,13 +17,16 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idUser;
+	private Integer idUser;
 
 	@Temporal(TemporalType.DATE)
 	private Date data_ostatniej_edycji;
 
 	@Temporal(TemporalType.DATE)
 	private Date data_rejestracji;
+
+	@Temporal(TemporalType.DATE)
+	private Date do_Kiedy_rola_aktywna;
 
 	@Column(name="`E-mail`")
 	private String e_mail;
@@ -34,31 +37,28 @@ public class User implements Serializable {
 
 	private String kod_Pocztowy_User;
 
-	private int kto_utworzyl;
-
-	private int kto_zmodyfikowal;
-
 	private String login;
 
 	private String miasto_User;
 
+	private String nazwa_roli;
+
 	private String nazwisko;
 
-	private int nr_budynku_User;
+	private Integer nr_budynku_User;
 
 	private String nr_CRL;
 
+	@Temporal(TemporalType.DATE)
+	private Date od_Kiedy_rola_funkcjonuje;
+
 	private String pesel;
 
-	private int telefon;
+	private Integer telefon;
 
 	private String tytu³;
 
 	private String ulica_User;
-
-	//bi-directional many-to-one association to MaRole
-	@OneToMany(mappedBy="user")
-	private List<MaRole> maRoles;
 
 	//bi-directional many-to-one association to Skierowanie
 	@OneToMany(mappedBy="user1")
@@ -75,7 +75,7 @@ public class User implements Serializable {
 		return this.idUser;
 	}
 
-	public void setIdUser(Integer idUser) {
+	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
 
@@ -93,6 +93,14 @@ public class User implements Serializable {
 
 	public void setData_rejestracji(Date data_rejestracji) {
 		this.data_rejestracji = data_rejestracji;
+	}
+
+	public Date getDo_Kiedy_rola_aktywna() {
+		return this.do_Kiedy_rola_aktywna;
+	}
+
+	public void setDo_Kiedy_rola_aktywna(Date do_Kiedy_rola_aktywna) {
+		this.do_Kiedy_rola_aktywna = do_Kiedy_rola_aktywna;
 	}
 
 	public String getE_mail() {
@@ -127,22 +135,6 @@ public class User implements Serializable {
 		this.kod_Pocztowy_User = kod_Pocztowy_User;
 	}
 
-	public int getKto_utworzyl() {
-		return this.kto_utworzyl;
-	}
-
-	public void setKto_utworzyl(int kto_utworzyl) {
-		this.kto_utworzyl = kto_utworzyl;
-	}
-
-	public int getKto_zmodyfikowal() {
-		return this.kto_zmodyfikowal;
-	}
-
-	public void setKto_zmodyfikowal(int kto_zmodyfikowal) {
-		this.kto_zmodyfikowal = kto_zmodyfikowal;
-	}
-
 	public String getLogin() {
 		return this.login;
 	}
@@ -159,6 +151,14 @@ public class User implements Serializable {
 		this.miasto_User = miasto_User;
 	}
 
+	public String getNazwa_roli() {
+		return this.nazwa_roli;
+	}
+
+	public void setNazwa_roli(String nazwa_roli) {
+		this.nazwa_roli = nazwa_roli;
+	}
+
 	public String getNazwisko() {
 		return this.nazwisko;
 	}
@@ -167,7 +167,7 @@ public class User implements Serializable {
 		this.nazwisko = nazwisko;
 	}
 
-	public int getNr_budynku_User() {
+	public Integer getNr_budynku_User() {
 		return this.nr_budynku_User;
 	}
 
@@ -183,6 +183,14 @@ public class User implements Serializable {
 		this.nr_CRL = nr_CRL;
 	}
 
+	public Date getOd_Kiedy_rola_funkcjonuje() {
+		return this.od_Kiedy_rola_funkcjonuje;
+	}
+
+	public void setOd_Kiedy_rola_funkcjonuje(Date od_Kiedy_rola_funkcjonuje) {
+		this.od_Kiedy_rola_funkcjonuje = od_Kiedy_rola_funkcjonuje;
+	}
+
 	public String getPesel() {
 		return this.pesel;
 	}
@@ -191,7 +199,7 @@ public class User implements Serializable {
 		this.pesel = pesel;
 	}
 
-	public int getTelefon() {
+	public Integer getTelefon() {
 		return this.telefon;
 	}
 
@@ -213,28 +221,6 @@ public class User implements Serializable {
 
 	public void setUlica_User(String ulica_User) {
 		this.ulica_User = ulica_User;
-	}
-
-	public List<MaRole> getMaRoles() {
-		return this.maRoles;
-	}
-
-	public void setMaRoles(List<MaRole> maRoles) {
-		this.maRoles = maRoles;
-	}
-
-	public MaRole addMaRole(MaRole maRole) {
-		getMaRoles().add(maRole);
-		maRole.setUser(this);
-
-		return maRole;
-	}
-
-	public MaRole removeMaRole(MaRole maRole) {
-		getMaRoles().remove(maRole);
-		maRole.setUser(null);
-
-		return maRole;
 	}
 
 	public List<Skierowanie> getSkierowanies1() {
@@ -280,5 +266,6 @@ public class User implements Serializable {
 
 		return skierowanies2;
 	}
+
 
 }

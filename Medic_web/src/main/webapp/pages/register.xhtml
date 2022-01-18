@@ -17,64 +17,64 @@
 	</ui:define>
 </h:head>
 
-<ui:define name="content">
+<ui:define name="content" >
 
-	<h3><p style="margin-top: 2em;">REJESTRACJA</p></h3>
+	<h3><p style="margin-top: 5em; margin-left:1em;">REJESTRACJA</p></h3>
 	
-               <h:form>
+               <h:form style="margin-left:1em;">
 			
                         <h:outputLabel for="email"  value="Email:" />
-                        <h:inputText id="email" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="email" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj email"/>
 							
 						<h:outputLabel for="login"  value="Login:" />
-                        <h:inputText id="login" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="login" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj login"/>
 						
 						<h:outputLabel for="pass"  value="Hasło:" />
-                        <h:inputSecret id="pass" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputSecret id="pass" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj hasło"/>
 						
 						<h:outputLabel for="pass2"  value="Powtórz hasło:" />
-                        <h:inputSecret id="pass2" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputSecret id="pass2" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Powtórz hasło"/>
 									
 						<h:outputLabel for="imie"  value="Imie:" />
-                        <h:inputText id="imie" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="imie" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj imię"/>	
 									
 						<h:outputLabel for="nazwisko"  value="Nazwisko:" />
-                        <h:inputText id="nazwisko" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="nazwisko" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj nazwisko"/>
 						
 						<h:outputLabel for="PESEL"  value="PESEL:" />
-                        <h:inputText id="PESEL" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="PESEL" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj PESEL"/>
 						
 						<h:outputLabel for="telefon"  value="Telefon:" />
-                        <h:inputText id="telefon" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="telefon" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj telefon"/>
 									
 						<h:outputLabel for="miasto"  value="miasto" />
-                        <h:inputText id="miasto" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="miasto" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj miasto"/>	
 						
 						<h:outputLabel for="kod_pocztowy"  value="Kod pocztowy:" />
-                        <h:inputText id="kod_pocztowy" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="kod_pocztowy" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj kod pocztowy"/>
 								
 						<h:outputLabel for="ulica"  value="Ulica:" />
-                        <h:inputText id="ulica" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="ulica" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj ulicę"/>	
 							
 						<h:outputLabel for="nr_budynku"  value="Numer budynku:" />
-                        <h:inputText id="nr_budynku" style="width:20%;" value="#{loginBB.login}"
+                        <h:inputText id="nr_budynku" style="width:20%;" value="#{registerBB.login}"
 							required="true"	requiredMessage="Podaj numer budynku"/>		
                         
 			         	<p:row>
 				            <p:column styleClass="ui-grid-col-12">
 				                
-				                <p:button action="#{loginBB.login}" update="msg" style=" margin-top:2em; font-size:20px; margin-bottom:2em;" value="ZAREJESTRUJ"/>
+				                 <h:commandButton action="#{registerBB.doRegister()}"  style="background-color:#007ad9; border-style:none; margin-top:3em; margin-right: 2em; font-size:20px;" value="ZAREJESTRUJ"/>    
 				            </p:column>
         				</p:row>
         		

@@ -16,7 +16,7 @@ public class Szczepionka implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idSzczepionka;
+	private Integer idSzczepionka;
 
 	private String nazwa_szczepionki;
 
@@ -31,7 +31,7 @@ public class Szczepionka implements Serializable {
 		return this.idSzczepionka;
 	}
 
-	public void setIdSzczepionka(Integer idSzczepionka) {
+	public void setIdSzczepionka(int idSzczepionka) {
 		this.idSzczepionka = idSzczepionka;
 	}
 

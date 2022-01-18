@@ -19,22 +19,27 @@
 
 <ui:define name="content" style="margin-left:3em;">
 
-	<h3><p style="margin-top: 5em; ">LOGOWANIE</p></h3>
-		<h:form>
+	<h3><p style="margin-top: 5em; margin-left:1em; ">LOGOWANIE</p></h3>
+		<h:form style="margin-left:1em;">
 			
                         <h:outputLabel for="login"  value="Login:" />
                         <h:inputText id="login" style="width:20%;" value="#{loginBB.login}"
-							required="true"	requiredMessage="Podaj login"/>
+							required="true"	requiredMessage="Podaj login"
+							validatorMessage="Zły format loginu"
+							/>
 
                         <h:outputLabel for="hasło"  value="Hasło:" />
                         <h:inputSecret id="hasło" style="width:20%;" value="#{loginBB.hasło}"
-							required="true"	requiredMessage="Podaj hasło"/>
+							required="true"	requiredMessage="Podaj hasło"
+							validatorMessage="Zły format hasła"
+							/>
 			         	<p:row>
 				            <p:column styleClass="ui-grid-col-12">
-				                <p:button action="#{loginBB.doLogin()}" update="msg" style=" margin-top:3em; margin-right: 2em; font-size:20px;" value="ZALOGUJ"/>
-				                <p:button action="/pages/register.xhtml?faces-redirect=true" update="msg" style="font-size:20px;" value="REJESTRACJA"/>
+				                <h:commandButton action="#{loginBB.doLogin()}"  style="background-color:#007ad9; border-style:none; margin-top:3em; margin-right: 2em; font-size:20px;" value="ZALOGUJ"/>    
+				            	<h:outputLink style="background-color:#009900; border: 1em solid #009900; border-radius: 5px; " value="register.xhtml">ZAREJESTRUJ</h:outputLink>
 				            </p:column>
         				</p:row>
+        				 
         		
 					<h:messages />
          </h:form>      

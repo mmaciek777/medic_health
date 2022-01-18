@@ -13,10 +13,18 @@
 			   <h:form>
 					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/index.xhtml?faces-redirect=true" value="Strona główna" /> 
 					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/szczepionkaList.xhtml?faces-redirect=true" value="Szczepienia" />  
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/doctor/panel.xhtml?faces-redirect=true" value="Panel lekarza" /> 
+					
+			<!-- DO POPRAWY --><!-- DO POPRAWY --><!-- DO POPRAWY -->		<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/doctor/panelList.xhtml?faces-redirect=true" value="Panel lekarza" /> 
+						
 					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/contact.xhtml?faces-redirect=true" value="Kontakt" /> 
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/user/account.xhtml?faces-redirect=true" value="Konto" /> 
-					<p:commandButton style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/login.xhtml?faces-redirect=true" value="Logowanie" /> <!-- HREF ZMIEN NA ACTION POTEM -->
+					<h:commandLink rendered="#{remoteClient.details.nazwa_roli != null}" style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/user/account.xhtml?faces-redirect=true" value="Konto" /> 
+					<p:commandButton rendered="#{remoteClient.details.nazwa_roli == null}" style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/login.xhtml?faces-redirect=true" value="Zaloguj" />
+					
+					<h:form style="display:inline;" rendered="#{remoteClient.details.nazwa_roli != null}">
+					<h:outputText style="margin-top:1em;font-size:19px;margin-left:2em;" value="Zalogowany: #{remoteClient.details.imie} #{remoteClient.details.nazwisko}" />
+						<p:commandButton style=" margin-left:2em; font-size:19px;" ajax="false" value="Wyloguj" action="#{loginBB.doLogout()}" />
+					</h:form>
+					 <!-- HREF ZMIEN NA ACTION POTEM -->
 			   </h:form>
 			</nav>
 	</header>
