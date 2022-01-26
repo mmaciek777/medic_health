@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+
+ 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+
+<ui:composition template="/templates/page-template.xhtml">
+
+
+ <ui:define name="title">
+		#{textAdmin.page_name}
+	</ui:define>
+<ui:define name="content">
+
+	
+	<p:panel header="#{textAdmin.searching}" toggleable="true" collapsed="true"
+		style="margin-bottom: 1em; margin-top:5em;">
+		<h:form>
+			<h:panelGrid columns="1" cellpadding="5">
+				<h:outputLabel style="color:black;  font-size:20px;" value="#{textAdmin.surname}" />
+				<p:inputText style="background:#D3D3D3; width: 20%;" value="#{adminListBB.nazwisko}" />
+				<p:commandButton value="#{textAdmin.search}" update="form-table" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+
+	<p:messages />
+
+	<h:form id="form-table" style="margin-bottom:1em;">
+
+		<p:dataTable  style="background:#D3D3D3; color:black;"
+				 value="#{adminListBB.listAll}" var="p" rows="5"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} #{textSzczepienie.record1} {totalRecords} #{textSzczepienie.record2}"
+                 rowsPerPageTemplate="5,10,15" > 
+
+			<p:column style="width: 20%;" >
+				<f:facet name="header">
+					<h:outputText value="#{textAdmin.name}" />
+				</f:facet>
+				<h:outputText  value="#{p.imie}" />
+			</p:column>
+			
+			<p:column >
+				<f:facet name="header">
+					<h:outputText value="#{textAdmin.surname}" />
+				</f:facet>
+				<h:outputText value="#{p.nazwisko}" />
+			</p:column>
+			
+			<p:column >
+				<f:facet name="header">
+					<h:outputText value="Tytuł: " />
+				</f:facet>
+				<h:outputText value="#{p.tytuł}" />
+			</p:column>
+			
+			<p:column >
+				<f:facet name="header">
+					<h:outputText value="#{textAdmin.role}" />
+				</f:facet>
+				<h:outputText value="#{p.nazwa_roli}" />
+			</p:column>
+			
+			<p:column >
+				<f:facet name="header">
+					<h:outputText value="#{textAdmin.city}" />
+				</f:facet>
+				<h:outputText value="#{p.miasto_User}" />
+			</p:column>
+			
+			<p:column >
+				<f:facet name="header">
+					<h:outputText value="#{textAdmin.postcode}" />
+				</f:facet>
+				<h:outputText value="#{p.kod_Pocztowy_User}" />
+			</p:column>
+			
+			<p:column >
+				<f:facet name="header">
+					<h:outputText value="#{textAdmin.phone}" />
+				</f:facet>
+				<h:outputText value="#{p.telefon}" />
+			</p:column>
+
+			<p:column rendered="#{remoteClient.details.nazwa_roli == 'Admin'}">
+				<f:facet name="header">
+					<h:outputText value="#{textAdmin.options}" />
+				</f:facet>
+
+				<p:commandButton value="#{textAdmin.edit}" style="margin-right:1em;"
+					action="#{adminListBB.editUser(p)}" />
+					
+				<p:commandButton value="#{textSzczepienie.delete}" style="margin-right:1em;"
+					action="#{adminListBB.deleteUser(p)}" update="@form"/>	
+					
+				
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+              
+      
+	
+	</ui:define>
+</ui:composition>
+</html>

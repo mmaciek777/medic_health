@@ -18,14 +18,14 @@ public class Skierowanie implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idSkierowanie;
 
-	@Temporal(TemporalType.DATE)
-	private Date termin_Dawka_Druga;
+	//@Temporal(TemporalType.DATE)
+	private String termin_Dawka_Druga;
 
-	@Temporal(TemporalType.DATE)
-	private Date termin_Dawka_Pierwsza;
+	//@Temporal(TemporalType.DATE)
+	private String termin_Dawka_Pierwsza;
 
-	@Temporal(TemporalType.DATE)
-	private Date termin_Dawka_Trzecia;
+	//@Temporal(TemporalType.DATE)
+	private String termin_Dawka_Trzecia;
 
 	//bi-directional many-to-one association to Szczepionka
 	@ManyToOne
@@ -49,31 +49,31 @@ public class Skierowanie implements Serializable {
 		return this.idSkierowanie;
 	}
 
-	public void setIdSkierowanie(int idSkierowanie) {
+	public void setIdSkierowanie(Integer idSkierowanie) {
 		this.idSkierowanie = idSkierowanie;
 	}
 
-	public Date getTermin_Dawka_Druga() {
+	public String getTermin_Dawka_Druga() {
 		return this.termin_Dawka_Druga;
 	}
 
-	public void setTermin_Dawka_Druga(Date termin_Dawka_Druga) {
+	public void setTermin_Dawka_Druga(String termin_Dawka_Druga) {
 		this.termin_Dawka_Druga = termin_Dawka_Druga;
 	}
 
-	public Date getTermin_Dawka_Pierwsza() {
+	public String getTermin_Dawka_Pierwsza() {
 		return this.termin_Dawka_Pierwsza;
 	}
 
-	public void setTermin_Dawka_Pierwsza(Date termin_Dawka_Pierwsza) {
+	public void setTermin_Dawka_Pierwsza(String termin_Dawka_Pierwsza) {
 		this.termin_Dawka_Pierwsza = termin_Dawka_Pierwsza;
 	}
 
-	public Date getTermin_Dawka_Trzecia() {
+	public String getTermin_Dawka_Trzecia() {
 		return this.termin_Dawka_Trzecia;
 	}
 
-	public void setTermin_Dawka_Trzecia(Date termin_Dawka_Trzecia) {
+	public void setTermin_Dawka_Trzecia(String termin_Dawka_Trzecia) {
 		this.termin_Dawka_Trzecia = termin_Dawka_Trzecia;
 	}
 

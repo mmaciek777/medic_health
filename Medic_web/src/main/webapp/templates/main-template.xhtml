@@ -5,15 +5,16 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 
+<f:view locale="#{facesContext.externalContext.requestLocale}">
+
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="title">Medic-Health</ui:insert></title>
 	
-	<!--  <base href="http://localhost:8080/MedicHealth/"></base>-->
 	
 	<h:outputStylesheet name="assets/css/main.css"/>
-	<noscript><h:outputStylesheet name="assets/css/noscript.css"/></noscript>
-	
+	<!-- <noscript><h:outputStylesheet name="assets/css/noscript.css"/></noscript>
+	 -->
 	
 	<link type="image/x-icon" rel="shortcut icon"
 		href="#{resource['template:img/strzykawka.jpg']}" />
@@ -37,7 +38,7 @@
 			</div>
 		</ui:insert>
 	</div>
-	
+	<!-- 
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
@@ -46,7 +47,8 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			
+			 -->
 </h:body>
+</f:view>
 
 </html>

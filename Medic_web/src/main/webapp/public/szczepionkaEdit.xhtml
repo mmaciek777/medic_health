@@ -15,18 +15,18 @@
 </f:metadata>
 
  <ui:define name="title">
-		Medic-Health - Szczepienia
+		#{textSzczepienie.name_page}
 	</ui:define>
 <ui:define name="content">
 
-	<p:panel toggleable="true" header="Edycja rekordu">
+	<p:panel toggleable="true" header="#{textSzczepienie.editing_record}" style="margin-top:5em;">
 
 		<h:form rendered="#{szczepionkaEditBB.szczepionka != null}">
-			<h:panelGrid columns="1" cellpadding="5">
+			<h:panelGrid columns="1" cellpadding="5" style="font-size:20px;">
 
-				<h:outputLabel for="p-nazwa_szczepionki" value="Nazwa szczepionki:" />
-				<p:inputText id="p-nazwa_szczepionki" value="#{szczepionkaEditBB.szczepionka.nazwa_szczepionki}"
-					required="true" requiredMessage="Podaj nazwę"
+				<h:outputLabel for="p-nazwa_szczepionki" style="color:black;" value="#{textSzczepienie.name_vac}" />
+				<p:inputText style="background:#D3D3D3; width: 20%;" id="p-nazwa_szczepionki" value="#{szczepionkaEditBB.szczepionka.nazwa_szczepionki}"
+					required="true" requiredMessage="#{textSzczepienie.name}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
@@ -36,10 +36,10 @@
 
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zapisz" action="#{szczepionkaEditBB.saveData()}"
+			<p:commandButton value="#{textSzczepienie.save}" action="#{szczepionkaEditBB.saveData()}"
 				style="margin-right: 1em;" update="@form" />
 
-			<p:button value="Anuluj" outcome="szczepionkaList" />
+			<p:button value="#{textSzczepienie.cancel}" outcome="szczepionkaList" />
 		</h:form>
 
 	</p:panel>

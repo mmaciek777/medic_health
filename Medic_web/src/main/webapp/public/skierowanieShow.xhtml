@@ -11,72 +11,68 @@
 <ui:composition template="/templates/page-template.xhtml">
 
  <ui:define name="title">
-		#{textPanel.name_page}
+		#{textSkierowanieShow.name_page}
 	</ui:define>
 <ui:define name="content">
 
-	<p:panel toggleable="true" header="#{textPanel.list}" style="margin-top:5em;">
+	<p:panel toggleable="true" header="#{textSkierowanieShow.my_vac}" style="margin-top:5em;">
 
 		<h:form id="form-table" style="margin-bottom:1em;">
 
-		<p:dataTable style="background:#D3D3D3; color:black;" 
-				 value="#{panelListBB.list}" var="s" rows="5" 
-		  		 paginator="true"
-                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 currentPageReportTemplate="{startRecord}-{endRecord} #{textSzczepienie.record1} {totalRecords} #{textSzczepienie.record2}"
-                 rowsPerPageTemplate="5,10,15" > >
+		<p:dataTable value="#{skierowanieListBB.skierowanieForUser}" var="s">
 
 			<p:column >
 				<f:facet name="header">
-					<h:outputText value="#{textPanel.nr}" />
+					<h:outputText value="#{textSkierowanieShow.nr} " />
 				</f:facet>
 				<h:outputText value="#{s.idSkierowanie}" />
 			</p:column>
 			
 			<p:column >
 				<f:facet name="header">
-					<h:outputText value="#{textPanel.data1}" />
+					<h:outputText value="#{textSkierowanieShow.data1}" />
 				</f:facet>
 				<h:outputText value="#{s.termin_Dawka_Pierwsza}" />
 			</p:column>
 			
 			<p:column >
 				<f:facet name="header">
-					<h:outputText value="#{textPanel.data2}" />
+					<h:outputText value="#{textSkierowanieShow.data2}" />
 				</f:facet>
 				<h:outputText value="#{s.termin_Dawka_Druga}" />
 			</p:column>
 			
 			<p:column >
 				<f:facet name="header">
-					<h:outputText value="#{textPanel.data3}" />
+					<h:outputText value="#{textSkierowanieShow.data3}" />
 				</f:facet>
 				<h:outputText value="#{s.termin_Dawka_Trzecia}" />
 			</p:column>
 			
 			<p:column >
 				<f:facet name="header">
-					<h:outputText value="#{textPanel.doctor}" />
+					<h:outputText value="#{textSkierowanieShow.doctor}" />
 				</f:facet>
 				<h:outputText value="#{s.user1.tytuł} #{s.user1.imie} #{s.user1.nazwisko}" />
 			</p:column>
 			
 			<p:column >
 				<f:facet name="header">
-					<h:outputText value="#{textPanel.patient}" />
+					<h:outputText value="#{textSkierowanieShow.patient}" />
 				</f:facet>
 				<h:outputText value="#{s.user2.imie} #{s.user2.nazwisko}" />
 			</p:column>
 			
 			<p:column >
 				<f:facet name="header">
-					<h:outputText value="#{textPanel.vaccine}" />
+					<h:outputText value="#{textSkierowanieShow.vaccine}" />
 				</f:facet>
 				<h:outputText value="#{s.szczepionka.nazwa_szczepionki}" />
 			</p:column>
 			
 		</p:dataTable>
 		
+		<p:button style="margin-top:1em;" value="#{textSzczepienie.return}" outcome="szczepionkaList" />
 	</h:form>
 
 	</p:panel>

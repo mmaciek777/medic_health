@@ -13,68 +13,114 @@
 <h:head>
 	
 	<ui:define name="title">
-		Medic-Health - Rejestracja
+		#{textRegister.page_name}
 	</ui:define>
 </h:head>
 
 <ui:define name="content" >
 
-	<h3><p style="margin-top: 5em; margin-left:1em;">REJESTRACJA</p></h3>
+	<h3><p style="margin-top: 5em; margin-left:1em;">#{textRegister.register}</p></h3>
 	
-               <h:form style="margin-left:1em;">
-			
-                        <h:outputLabel for="email"  value="Email:" />
-                        <h:inputText id="email" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj email"/>
+               <h:form rendered="#{registerBB.user != null}" style="margin-left:1em;">
+               
+                        <h:outputLabel for="u-email"  value="#{textRegister.Email}" />
+                        <h:inputText id="u-email" style="width:20%;" value="#{registerBB.user.e_mail}"
+							required="true"	requiredMessage="#{textRegister.podaj_e}"
+							validatorMessage="#{textRegister.invalid_e}">
+						<f:validateRegex pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"/>
+						 </h:inputText>
+						
+						<h:outputLabel for="u-login"  value="#{textRegister.login}" />
+                        <h:inputText id="u-login" style="width:20%;" value="#{registerBB.user.login}"
+							required="true"	requiredMessage="#{textRegister.podaj_l}"
+							validatorMessage="#{textRegister.invalid_l}">
+						<f:validateRegex pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$"  />
+			    		</h:inputText>
+						
+						<h:outputLabel for="password"  value="#{textRegister.pass}" />
+                        <p:password id="password" style="width:20%;" value="#{registerBB.user.hasło}"  inline="true" feedback="true" match="password2"
+                        	 promptLabel="#{textRegister.promptLabel}" weakLabel="#{textRegister.weakLabel}" goodLabel="#{textRegister.goodLabel}" strongLabel="#{textRegister.strongLabel}"
+							required="true"	requiredMessage="#{textRegister.podaj_h}"
+							validatorMessage="#{textRegister.invalid_p} ">
+						<f:validateRegex pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"  />
+			    		</p:password>
+			    		
+			    		<h:outputLabel for="password2"  value="#{textRegister.pass2}" />
+                        <p:password id="password2" style="width:20%;" value="#{registerBB.user.hasło}"  inline="true" feedback="true" 
+							required="true"	requiredMessage="#{textRegister.podaj_h2}"
+							validatorMessage="#{textRegister.invalid_p} ">
+						<f:validateRegex pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"  />
+			    		</p:password>		
 							
-						<h:outputLabel for="login"  value="Login:" />
-                        <h:inputText id="login" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj login"/>
-						
-						<h:outputLabel for="pass"  value="Hasło:" />
-                        <h:inputSecret id="pass" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj hasło"/>
-						
-						<h:outputLabel for="pass2"  value="Powtórz hasło:" />
-                        <h:inputSecret id="pass2" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Powtórz hasło"/>
+						<h:outputLabel for="u-imie"  value="#{textRegister.name}" />
+                        <h:inputText id="u-imie" style="width:20%;" value="#{registerBB.user.imie}"
+							required="true"	requiredMessage="#{textRegister.podaj_s}"
+							validatorMessage="#{textRegister.invalid_s}">
+						<f:validateRegex pattern="^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$"  />
+						</h:inputText>	
 									
-						<h:outputLabel for="imie"  value="Imie:" />
-                        <h:inputText id="imie" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj imię"/>	
-									
-						<h:outputLabel for="nazwisko"  value="Nazwisko:" />
-                        <h:inputText id="nazwisko" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj nazwisko"/>
+						<h:outputLabel for="u-nazwisko"  value="#{textRegister.surname}" />
+                        <h:inputText id="u-nazwisko" style="width:20%;" value="#{registerBB.user.nazwisko}"
+							required="true"	requiredMessage="#{textRegister.podaj_sn}"
+							validatorMessage="#{textRegister.invalid_sn}">
+						<f:validateRegex pattern="^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$"  />
+						</h:inputText>
 						
-						<h:outputLabel for="PESEL"  value="PESEL:" />
-                        <h:inputText id="PESEL" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj PESEL"/>
-						
-						<h:outputLabel for="telefon"  value="Telefon:" />
-                        <h:inputText id="telefon" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj telefon"/>
-									
-						<h:outputLabel for="miasto"  value="miasto" />
-                        <h:inputText id="miasto" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj miasto"/>	
-						
-						<h:outputLabel for="kod_pocztowy"  value="Kod pocztowy:" />
-                        <h:inputText id="kod_pocztowy" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj kod pocztowy"/>
+						<h:outputLabel for="u-PESEL"  value="#{textRegister.pesel}" />
+                        <h:inputText id="u-PESEL" style="width:20%;" value="#{registerBB.user.pesel}"
+							required="true"	requiredMessage="#{textRegister.podaj_pesel}"
+							validatorMessage="#{textRegister.invalid_pesel}">
+						<f:validateRegex pattern = "^\d{11}$" />
+			    		</h:inputText>
+							
+						<h:outputLabel for="u-telefon"  value="#{textRegister.phone}" />
+                        <h:inputText id="u-telefon" style="width:20%;" value="#{registerBB.user.telefon}"
+							required="true"	requiredMessage="#{textRegister.podaj_telefon}"
+							validatorMessage="#{textRegister.invalid_telefon}">
+						<f:validateRegex pattern = "^[0-9]{9}$" />
+			    		</h:inputText>
 								
-						<h:outputLabel for="ulica"  value="Ulica:" />
-                        <h:inputText id="ulica" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj ulicę"/>	
+						<h:outputLabel for="u-miasto"  value="#{textRegister.city}" />
+                        <h:inputText id="u-miasto" style="width:20%;" value="#{registerBB.user.miasto_User}"
+							required="true"	requiredMessage="#{textRegister.podaj_city}"
+							validatorMessage="#{textRegister.invalid_city}">
+						<f:validateRegex pattern="^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$"/>
+			    		</h:inputText>	
+						 
+						<h:outputLabel for="u-kod_pocztowy"  value="#{textRegister.postcode}" />
+                        <h:inputText id="u-kod_pocztowy" style="width:20%;" value="#{registerBB.user.kod_Pocztowy_User}"
+							required="true"	requiredMessage="#{textRegister.podaj_postcode}"
+							validatorMessage="#{textRegister.invalid_postcode}">
+						<f:validateRegex pattern = "^[0-9]{2}-[0-9]{3}$" />	
+						</h:inputText>
+						 
+						<h:outputLabel for="u-ulica"  value="#{textRegister.street}" />
+                        <h:inputText id="u-ulica" style="width:20%;" value="#{registerBB.user.ulica_User}"
+							required="true"	requiredMessage="#{textRegister.podaj_street}"
+							validatorMessage="#{textRegister.invalid_street}">
+						<f:validateRegex pattern="^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$"  />
+						</h:inputText>	
 							
-						<h:outputLabel for="nr_budynku"  value="Numer budynku:" />
-                        <h:inputText id="nr_budynku" style="width:20%;" value="#{registerBB.login}"
-							required="true"	requiredMessage="Podaj numer budynku"/>		
-                        
+						<h:outputLabel for="u-nr_budynku"  value="#{textRegister.nr_building}" />
+                        <h:inputText id="u-nr_budynku" style="width:20%;" value="#{registerBB.user.nr_budynku_User}"
+							required="true"	requiredMessage="#{textRegister.podaj_number_b}"
+							validatorMessage="#{textRegister.invalid_number_b}">
+						<f:validateRegex pattern = "^[0-9]{1,4}$" />	
+						</h:inputText>
+						
+						<h:outputLabel style="display:none;" for="u-nazwa_roli" value="Rola:" />
+						<h:selectOneMenu  id="u-nazwa_roli" style="width:20%; display:none;" value="#{registerBB.user.nazwa_roli}">
+							<f:selectItem itemLabel="Pacjent" itemValue="Pacjent"/>
+						</h:selectOneMenu>
+						
+						
 			         	<p:row>
-				            <p:column styleClass="ui-grid-col-12">
+				            <p:column>
 				                
-				                 <h:commandButton action="#{registerBB.doRegister()}"  style="background-color:#007ad9; border-style:none; margin-top:3em; margin-right: 2em; font-size:20px;" value="ZAREJESTRUJ"/>    
+				                 <p:commandButton value="#{textRegister.sign}" action="#{registerBB.saveData()}"
+										style="margin-right: 1em; margin-top:4em;" update="@form" />
+								 <p:button value="#{textRegister.cancel}" outcome="login" />		
+						 
 				            </p:column>
         				</p:row>
         		

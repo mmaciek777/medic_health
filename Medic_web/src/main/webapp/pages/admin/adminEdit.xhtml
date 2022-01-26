@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+
+ 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/templates/page-template.xhtml">
+
+<f:metadata>
+    <f:viewAction action="#{adminEditBB.onLoad()}" />
+</f:metadata>
+
+ <ui:define name="title">
+		#{textAdmin.page_name}
+	</ui:define>
+<ui:define name="content">
+
+	<p:panel toggleable="true" header="#{textAdmin.editing_record}" style="margin-top:5em; ">
+
+		<h:form rendered="#{adminEditBB.user != null}" >
+			<h:panelGrid columns="3" cellpadding="5" style="font-size:20px;" >
+				
+				<p:outputLabel for="p-imie" style="color:black;" value="#{textAdmin.name}" />
+				<p:inputText  style="background:#D3D3D3;" id="p-imie" value="#{adminEditBB.user.imie}"
+					required="true" requiredMessage="#{textAdmin.insert_name}"
+					validatorMessage="Niepoprawny format imienia!">
+					<f:validateRegex pattern="^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$"  />
+				</p:inputText>
+				<p:message for="p-imie" display="icon"/>
+
+				<p:outputLabel for="p-nazwisko"  style="color:black;" value="#{textAdmin.surname}" />
+				<p:inputText style="background:#D3D3D3;" id="p-nazwisko" value="#{adminEditBB.user.nazwisko}"
+					required="true" requiredMessage="#{textAdmin.insert_surname}"
+					validatorMessage="Niepoprawny format nazwiska!">
+					<f:validateRegex pattern="^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$"  />
+				</p:inputText>
+				<p:message for="p-nazwisko" display="icon"/>
+				
+				<p:outputLabel for="p-nazwa_roli" style="color:black;" value="#{textAdmin.name_role}" />
+				<p:selectOneMenu style="background:#D3D3D3;" id="p-nazwa_roli" value="#{adminEditBB.user.nazwa_roli}">
+					<f:selectItem itemLabel="Pacjent" itemValue="Pacjent"/>
+					<f:selectItem itemLabel="Doktor" itemValue="Doktor"/>
+					<f:selectItem itemLabel="Admin" itemValue="Admin"/>
+				</p:selectOneMenu>
+				<p:message for="p-nazwa_roli" display="icon"/>
+				
+				<p:outputLabel for="p-tytuł" style="color:black;" value="Tytuł: " />
+				<p:selectOneMenu style="background:#D3D3D3;" id="p-tytuł" value="#{adminEditBB.user.tytuł}">
+					<f:selectItem itemLabel="mgr" itemValue="mgr"/>
+					<f:selectItem itemLabel="" itemValue=""/>
+				</p:selectOneMenu>
+				<p:message for="p-nazwa_roli" display="icon"/>
+				
+				<p:outputLabel for="p-miasto_user" style="color:black; " value="#{textAdmin.city}" />
+				<p:inputText style="background:#D3D3D3;" id="p-miasto_user" value="#{adminEditBB.user.miasto_User}"
+					required="true" requiredMessage="#{textAdmin.insert_city}"
+					validatorMessage="Niepoprawna nazwa miasta!">
+					<f:validateRegex pattern="^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$"/>
+			    </p:inputText>
+				<p:message for="p-miasto_user" display="icon"/>
+				
+				<p:outputLabel for="p-kod_pocztowy_user" style="color:black; " value="#{textAdmin.postcode}" />
+				<p:inputText style="background:#D3D3D3;" id="p-kod_pocztowy_user" value="#{adminEditBB.user.kod_Pocztowy_User}"
+					required="true" requiredMessage="#{textAdmin.insert_postcode}"
+					validatorMessage="Niepoprawna format kodu pocztowego! Przykładowy format 00-000!">
+					<f:validateRegex pattern = "^[0-9]{2}-[0-9]{3}$" />
+			    </p:inputText>
+				<p:message for="p-kod_pocztowy_user" display="icon"/>
+				
+				<p:outputLabel for="p-telefon" style="color:black;" value="#{textAdmin.phone}" />
+				<p:inputText style="background:#D3D3D3;" id="p-telefon" value="#{adminEditBB.user.telefon}"
+					required="true" requiredMessage="#{textAdmin.insert_phone}"
+					validatorMessage="Niepoprawny format nr telefonu! Przykładowy format 111111111.">
+					<f:validateRegex pattern = "^[0-9]{9}$" />
+			    </p:inputText>
+				<p:message for="p-telefon" display="icon"/>
+			</h:panelGrid>
+
+			<p:messages id="msgs" />
+
+			<p:commandButton value="#{textAdmin.save}" action="#{adminEditBB.saveData()}"
+				style="margin-right: 1em;" update="@form" />
+
+			<p:button value="#{textAdmin.cancel}" outcome="adminList" />
+		</h:form>
+
+	</p:panel>
+           
+	</ui:define>
+</ui:composition>
+</html>

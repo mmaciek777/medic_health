@@ -1,4 +1,4 @@
-package com.jsfcourse.szczepionka;
+package com.jsfcourse.admin;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -9,22 +9,22 @@ import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import com.jsf.dao.SzczepionkaDAO;
-import com.jsf.entities.Szczepionka;
+import com.jsf.dao.UserDAO;
+import com.jsf.entities.User;
 
 @Named
 @ViewScoped
-public class SzczepionkaEditBB implements Serializable {
+public class AdminEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_SZCZEPIONKA_LIST = "szczepionkaList?faces-redirect=true";
+	private static final String PAGE_USER_LIST = "adminList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private Szczepionka szczepionka = new Szczepionka();
-	private Szczepionka loaded = null;
+	private User user = new User();
+	private User loaded = null;
 
 	@EJB
-	SzczepionkaDAO szczepionkaDAO;
+	UserDAO userDAO;
 
 	@Inject
 	FacesContext context;
@@ -32,16 +32,17 @@ public class SzczepionkaEditBB implements Serializable {
 	@Inject
 	Flash flash;
 
-	public Szczepionka getSzczepionka() {
-		return szczepionka;
+	public User getUser() {
+		return user;
 	}
 
 	public void onLoad() throws IOException {
 		
-		loaded = (Szczepionka) flash.get("szczepionka");
+		loaded = (User) flash.get("user");
 
+		
 		if (loaded != null) {
-			szczepionka = loaded;
+			user = loaded;
 			
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bledne uzycie systemu", null));
@@ -51,18 +52,18 @@ public class SzczepionkaEditBB implements Serializable {
 	}
 
 	public String saveData() {
-        // no Person object passed
+		
         if (loaded == null) {
             return PAGE_STAY_AT_THE_SAME;
         }
 
         try {
-            if (szczepionka.getIdSzczepionka() == null) {
-                // new record
-            	szczepionkaDAO.create(szczepionka);
+            if (user.getIdUser() == null) {
+                
+            	userDAO.create(user);
             } else {
-                // existing record
-            	szczepionkaDAO.merge(szczepionka);
+                
+            	userDAO.merge(user);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,6 +72,6 @@ public class SzczepionkaEditBB implements Serializable {
             return PAGE_STAY_AT_THE_SAME;
         }
 
-        return PAGE_SZCZEPIONKA_LIST;
+        return PAGE_USER_LIST;
     }
 }

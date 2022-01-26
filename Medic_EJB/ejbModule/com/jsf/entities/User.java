@@ -45,16 +45,14 @@ public class User implements Serializable {
 
 	private String nazwisko;
 
-	private Integer nr_budynku_User;
-
-	private String nr_CRL;
+	private String nr_budynku_User;
 
 	@Temporal(TemporalType.DATE)
 	private Date od_Kiedy_rola_funkcjonuje;
 
 	private String pesel;
 
-	private Integer telefon;
+	private String telefon;
 
 	private String tytu³;
 
@@ -75,7 +73,7 @@ public class User implements Serializable {
 		return this.idUser;
 	}
 
-	public void setIdUser(int idUser) {
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
 
@@ -167,21 +165,14 @@ public class User implements Serializable {
 		this.nazwisko = nazwisko;
 	}
 
-	public Integer getNr_budynku_User() {
+	public String getNr_budynku_User() {
 		return this.nr_budynku_User;
 	}
 
-	public void setNr_budynku_User(int nr_budynku_User) {
+	public void setNr_budynku_User(String nr_budynku_User) {
 		this.nr_budynku_User = nr_budynku_User;
 	}
 
-	public String getNr_CRL() {
-		return this.nr_CRL;
-	}
-
-	public void setNr_CRL(String nr_CRL) {
-		this.nr_CRL = nr_CRL;
-	}
 
 	public Date getOd_Kiedy_rola_funkcjonuje() {
 		return this.od_Kiedy_rola_funkcjonuje;
@@ -199,11 +190,11 @@ public class User implements Serializable {
 		this.pesel = pesel;
 	}
 
-	public Integer getTelefon() {
+	public String getTelefon() {
 		return this.telefon;
 	}
 
-	public void setTelefon(int telefon) {
+	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
 

@@ -11,18 +11,19 @@
 		 </h:form>
 			<nav id="nav">
 			   <h:form>
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/index.xhtml?faces-redirect=true" value="Strona główna" /> 
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/szczepionkaList.xhtml?faces-redirect=true" value="Szczepienia" />  
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/index.xhtml?faces-redirect=true" value="#{textHeader.home}" /> 
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/szczepionkaList.xhtml?faces-redirect=true" value="#{textHeader.vaccination}" />  
 					
-			<!-- DO POPRAWY --><!-- DO POPRAWY --><!-- DO POPRAWY -->		<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/doctor/panelList.xhtml?faces-redirect=true" value="Panel lekarza" /> 
+					<h:commandLink rendered="#{remoteClient.details.nazwa_roli == 'Doktor'}" style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/doctor/panelList.xhtml?faces-redirect=true" value="#{textHeader.doctor}" /> 
 						
-					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/contact.xhtml?faces-redirect=true" value="Kontakt" /> 
-					<h:commandLink rendered="#{remoteClient.details.nazwa_roli != null}" style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/user/account.xhtml?faces-redirect=true" value="Konto" /> 
-					<p:commandButton rendered="#{remoteClient.details.nazwa_roli == null}" style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/login.xhtml?faces-redirect=true" value="Zaloguj" />
+					<h:commandLink style="margin-top:1em;font-size:19px;margin-left:2em;" action="/public/contact.xhtml?faces-redirect=true" value="#{textHeader.contact}" /> 
+					<h:commandLink rendered="#{remoteClient.details.nazwa_roli != null}" style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/user/account.xhtml?faces-redirect=true" value="#{textHeader.account}" />
+					<h:commandLink rendered="#{remoteClient.details.nazwa_roli == 'Admin'}" style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/admin/adminList.xhtml?faces-redirect=true" value="#{textHeader.admin}" />  
+					<p:commandButton rendered="#{remoteClient.details.nazwa_roli == null}" style="margin-top:1em;font-size:19px;margin-left:2em;" action="/pages/login.xhtml?faces-redirect=true" value="#{textHeader.login}" />
 					
 					<h:form style="display:inline;" rendered="#{remoteClient.details.nazwa_roli != null}">
-					<h:outputText style="margin-top:1em;font-size:19px;margin-left:2em;" value="Zalogowany: #{remoteClient.details.imie} #{remoteClient.details.nazwisko}" />
-						<p:commandButton style=" margin-left:2em; font-size:19px;" ajax="false" value="Wyloguj" action="#{loginBB.doLogout()}" />
+					<h:outputText style="margin-top:1em;font-size:19px;margin-left:2em;" value="#{textHeader.logged}: #{remoteClient.details.imie} #{remoteClient.details.nazwisko}" />
+						<p:commandButton style=" margin-left:2em; font-size:19px;" ajax="false" value="#{textHeader.logout}" action="#{loginBB.doLogout()}" />
 					</h:form>
 					 <!-- HREF ZMIEN NA ACTION POTEM -->
 			   </h:form>

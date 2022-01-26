@@ -10,26 +10,23 @@
 
 <ui:composition template="/templates/page-template.xhtml">
  <ui:define name="title">
-		Medic-Health - Konto
+		#{textKonto.page_name}
 	</ui:define>
 <ui:define name="content">
 
-            <h2><p style="padding-top: 3em; text-align:center;">Konto</p></h2>
+            <h2><p style="padding-top: 3em; text-align:center;">#{textKonto.account}</p></h2>
             <h:form style="text-align:center;">
          
 	             <h:panelGrid columns="1" cellpadding="5" style="font-size:19px;">
-			           <h:outputText style="margin-top:1em;margin-left:2em;" value="Imię: #{remoteClient.details.imie}"/>
-			           <h:outputText style="margin-top:1em;margin-left:2em;" value="Nazwisko: #{remoteClient.details.nazwisko}" />
-			           <h:outputText style="margin-top:1em;margin-left:2em;" value="Miasto: #{remoteClient.details.miasto_User}" />
-			           <h:outputText style="margin-top:1em;margin-left:2em;" value="Telefon: #{remoteClient.details.telefon}" />
-			           <h:outputText style="margin-top:1em;margin-left:2em;" value="Email: #{remoteClient.details.e_mail}" />
+	             	   
+			           <h:outputText style="margin-top:1em;margin-left:2em;" value="#{textKonto.name} #{remoteClient.details.imie}"/>
+			           <h:outputText style="margin-top:1em;margin-left:2em;" value="#{textKonto.surname} #{remoteClient.details.nazwisko}" />
+			           <h:outputText style="margin-top:1em;margin-left:2em;" value="#{textKonto.city} #{remoteClient.details.miasto_User}" />
+			           <h:outputText style="margin-top:1em;margin-left:2em;" value="#{textKonto.phone} #{remoteClient.details.telefon}" />
+			           <h:outputText style="margin-top:1em;margin-left:2em;" value="#{textKonto.email} #{remoteClient.details.e_mail}" />
 			       
 			     
 	           </h:panelGrid> 
-	           <p:commandButton value="Edytuj" style="margin-left:2em; margin-bottom:2em; "
-									action="#{szczepionkaListBB.editSzczepionka(p)}" />
-				<p:commandButton value="Usuń" style="margin-left:2em; margin-bottom:2em; "
-									action="#{szczepionkaListBB.editSzczepionka(p)}" />					
            </h:form>   
       
 	

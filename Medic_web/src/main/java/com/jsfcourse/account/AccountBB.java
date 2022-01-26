@@ -1,3 +1,4 @@
+/*
 package com.jsfcourse.account;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.jsf.dao.UserDAO;
+import com.jsf.entities.Szczepionka;
 import com.jsf.entities.User;
 
 @Named
@@ -20,6 +22,8 @@ public class AccountBB implements Serializable {
 
 	private static final String PAGE_ACCOUNT_LIST = "account?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
+	private static final String MAIN = "index?faces-redirect=true";
+	private static final String EDIT = null;
 
 	private User user = new User();
 	private User loaded = null;
@@ -38,39 +42,32 @@ public class AccountBB implements Serializable {
 	}
 
 	public void onLoad() throws IOException {
-		// 1. load person passed through session
-		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-		// loaded = (Person) session.getAttribute("person");
-
-		// 2. load person passed through flash
+		
 		loaded = (User) flash.get("user");
 
-		// cleaning: attribute received => delete it from session
 		if (loaded != null) {
 			user = loaded;
-			// session.removeAttribute("person");
+		
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bledne uzycie systemu", null));
-			// if (!context.isPostback()) { //possible redirect
-			// context.getExternalContext().redirect("personList.xhtml");
-			// context.responseComplete();
-			// }
+		
 		}
 
 	}
+	
 
 	public String saveData() {
-        // no Person object passed
+       
         if (loaded == null) {
             return PAGE_STAY_AT_THE_SAME;
         }
 
         try {
             if (user.getIdUser() == null) {
-                // new record
+                
             	userDAO.create(user);
             } else {
-                // existing record
+                
             	userDAO.merge(user);
             }
         } catch (Exception e) {
@@ -83,3 +80,4 @@ public class AccountBB implements Serializable {
         return PAGE_ACCOUNT_LIST;
     }
 }
+*/

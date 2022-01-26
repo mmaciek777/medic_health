@@ -2239,7 +2239,7 @@ input, select, textarea {
 		outline: 0;
 		padding: 0 1em;
 		text-decoration: none;
-		width: 100%;
+		width: 40%;
 	}
 
 		input[type="text"]:invalid,
@@ -4142,4 +4142,19 @@ margin-bottom: 1em;
 	margin-top:1em;
 	font-size:19px;
 	margin-left:2em;
+}
+
+.ui-paginator .ui-paginator-current, body .ui-paginator .ui-paginator-rpp-options {
+    margin: 0 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    width:8%;
+    
+}
+.ui-paginator-rpp-options .ui-widget .ui-state-default .ui-corner-left{
+	width:10%;
+}
+
+.ui-inputfield{
+	display:inline-block !important;
 }

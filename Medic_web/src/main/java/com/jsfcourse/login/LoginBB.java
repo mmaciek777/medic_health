@@ -12,6 +12,8 @@ import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Size;
+import javax.faces.context.Flash;
+import javax.inject.Inject;
 
 import com.jsf.dao.UserDAO;
 import com.jsf.entities.User;
@@ -22,15 +24,13 @@ public class LoginBB {
 	private static final String PAGE_MAIN = "/public/index?faces-redirect=true";
 	private static final String PAGE_LOGIN = "/public/index?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
+	private static final String PAGE_REGISTER = "register?faces-redirect=true";
 	
 	
-	@Size(min=6,max=45)
 	private String login;
-	
-	@Size(min=6,max=45)
 	private String has³o;
 	
-
+	
 	public String getLogin() {
 		return login;
 	}
@@ -47,6 +47,9 @@ public class LoginBB {
 		this.has³o = has³o;
 	}
 
+	@Inject
+	Flash flash;
+	
 	@EJB
 	UserDAO UserDAO;
 	
@@ -76,6 +79,11 @@ public class LoginBB {
 				.getExternalContext().getSession(true);
 		session.invalidate();
 		return PAGE_LOGIN;
+	}
+	
+	public String newUser(){
+		
+		return PAGE_REGISTER;
 	}
 	
 	

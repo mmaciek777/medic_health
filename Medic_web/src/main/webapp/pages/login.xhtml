@@ -13,30 +13,29 @@
 <h:head>
 	
 	<ui:define name="title">
-		Medic-Health - Logowanie
+		#{textLogin.page_name}
 	</ui:define>
 </h:head>
 
 <ui:define name="content" style="margin-left:3em;">
 
-	<h3><p style="margin-top: 5em; margin-left:1em; ">LOGOWANIE</p></h3>
+	<h3><p style="margin-top: 5em; margin-left:1em; "> #{textLogin.logging} </p></h3>
 		<h:form style="margin-left:1em;">
 			
-                        <h:outputLabel for="login"  value="Login:" />
+                        <h:outputLabel for="login"  value="#{textLogin.login}" />
                         <h:inputText id="login" style="width:20%;" value="#{loginBB.login}"
-							required="true"	requiredMessage="Podaj login"
-							validatorMessage="Zły format loginu"
-							/>
-
-                        <h:outputLabel for="hasło"  value="Hasło:" />
+							required="true"	requiredMessage="#{textLogin.podaj_l}"
+							validatorMessage="Niepoprawny login lub hasło!">
+						<f:validateRegex pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$"  />
+			    		</h:inputText>
+			    		
+                        <h:outputLabel for="hasło"  value="#{textLogin.pass}" />
                         <h:inputSecret id="hasło" style="width:20%;" value="#{loginBB.hasło}"
-							required="true"	requiredMessage="Podaj hasło"
-							validatorMessage="Zły format hasła"
-							/>
+							required="true"	requiredMessage="#{textLogin.podaj_h}"/>
 			         	<p:row>
 				            <p:column styleClass="ui-grid-col-12">
-				                <h:commandButton action="#{loginBB.doLogin()}"  style="background-color:#007ad9; border-style:none; margin-top:3em; margin-right: 2em; font-size:20px;" value="ZALOGUJ"/>    
-				            	<h:outputLink style="background-color:#009900; border: 1em solid #009900; border-radius: 5px; " value="register.xhtml">ZAREJESTRUJ</h:outputLink>
+				                <p:commandButton action="#{loginBB.doLogin()}" update="@form" style="margin-top:3em; margin-right: 2em; font-size:20px;" value="#{textLogin.log}"/>    
+				            	<p:button value="#{textLogin.register}" outcome="#{loginBB.newUser()}" style="margin-bottom:1em; font-size:19px;"/>
 				            </p:column>
         				</p:row>
         				 

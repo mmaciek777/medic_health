@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import com.jsf.entities.Szczepionka;
+import com.jsf.entities.User;
 
 @Stateless
 public class SzczepionkaDAO {
@@ -47,7 +48,7 @@ public class SzczepionkaDAO {
 	public List<Szczepionka> getList(Map<String, Object> searchParams) {
 		List<Szczepionka> list = null;
 
-		// 1. Build query string with parameters
+		
 		String select = "select p ";
 		String from = "from Szczepionka p ";
 		String where = "";
@@ -64,19 +65,13 @@ public class SzczepionkaDAO {
 			where += "p.nazwa_szczepionki like :nazwa_szczepionki ";
 		}
 		
-		// ... other parameters ... 
-
-		// 2. Create query object
+		
 		Query query = em.createQuery(select + from + where + orderby);
 
-		// 3. Set configured parameters
 		if (nazwa_szczepionki != null) {
 			query.setParameter("nazwa_szczepionki", nazwa_szczepionki+"%");
 		}
 
-		// ... other parameters ... 
-
-		// 4. Execute query and retrieve list of Person objects
 		try {
 			list = query.getResultList();
 		} catch (Exception e) {
@@ -86,4 +81,15 @@ public class SzczepionkaDAO {
 		return list;
 		
 	}
+	
+	
+	 	public Szczepionka findSzczepionka(int id) {
+	    Query query = em.createQuery("select p from Szczepionka p where idSzczepionka=" + String.valueOf(id));
+	    @SuppressWarnings("unchecked")
+	    List<Szczepionka> list = query.getResultList();
+	    Szczepionka szczepionka = list.get(0);
+	    return szczepionka;
+	    
+	}
+
 }

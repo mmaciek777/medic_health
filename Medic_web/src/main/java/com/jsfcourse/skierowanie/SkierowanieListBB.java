@@ -1,34 +1,40 @@
-package com.jsfcourse.panel;
+package com.jsfcourse.skierowanie;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.enterprise.context.RequestScoped;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
+import javax.faces.simplesecurity.RemoteClient;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.jsf.dao.SkierowanieDAO;
 import com.jsf.dao.SzczepionkaDAO;
 import com.jsf.dao.UserDAO;
-import com.jsf.dao.SkierowanieDAO;
-
+import com.jsf.entities.Skierowanie;
 import com.jsf.entities.Szczepionka;
 import com.jsf.entities.User;
-import com.jsf.entities.Skierowanie;
 
 @Named
 @RequestScoped
-public class PanelListBB {
-	private static final String PAGE_PANEL_EDIT = "panelEdit?faces-redirect=true";
+public class SkierowanieListBB {
+	private static final String PAGE_SKIEROWANIE_ADD = "skierowanieAdd?faces-redirect=true";
+	private static final String PAGE_SKIEROWANIE_SHOW = "skierowanieShow?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
+	@PersistenceContext
+	EntityManager em;
+	
 	private String nazwa_szczepionki;
 	private Integer idSkierowanie;
 	private Date Termin_Dawka_Pierwsza;
@@ -37,6 +43,7 @@ public class PanelListBB {
 	private Integer Pacjent;
 	private String Imie;
 	private String Tytu³;
+	private Integer idUser;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -116,6 +123,15 @@ public class PanelListBB {
 	public List<Skierowanie> getFullList(){
 		return SkierowanieDAO.getFullList();
 	}
+	
+	public List<Skierowanie> getSkierowanieForUser(){
+		HttpSession session = (HttpSession) extcontext.getSession(false);
+		
+		RemoteClient<User> client = RemoteClient.load(session);
+		
+		
+		return SkierowanieDAO.getSkierowanieForUser(client.getDetails());
+	}
 
 	public List<Skierowanie> getList(){
 		List<Skierowanie> list = null;
@@ -126,6 +142,26 @@ public class PanelListBB {
 		
 		return list;
 	}
+	
+	public String newZastrzyk(){
+		
+		return PAGE_SKIEROWANIE_ADD;
+	}
+	
+	public String showZastrzyk(){
+		
+		return PAGE_SKIEROWANIE_SHOW;
+	}
 
+	public Integer getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
+	}
+
+	
+	
 	
 }

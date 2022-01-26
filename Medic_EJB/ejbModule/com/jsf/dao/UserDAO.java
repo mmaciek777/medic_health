@@ -53,4 +53,122 @@ public class UserDAO {
 		return user;
 	}
 	
+	
+	 	public User findUser(int id) {
+        Query query = em.createQuery("select u from User u where idUser=" + String.valueOf(id));
+        @SuppressWarnings("unchecked")
+        List<User> list = query.getResultList();
+        User user = list.get(0);
+        return user;
+    }
+	 	
+	 	public User findUserPacjent(int id) {
+	        Query query = em.createQuery("select u from User u where idUser=" + String.valueOf(id));
+	        @SuppressWarnings("unchecked")
+	        List<User> list = query.getResultList();
+	        User user = list.get(0);
+	        return user;
+	}
+	
+	
+	public List<User> getFullListAll() {
+		List<User> listAll = null;
+
+		Query query = em.createQuery("select u from User u");
+
+		try {
+			listAll = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return listAll;
+	}
+	
+	public List<User> getListAll(Map<String, Object> searchParams) {
+		List<User> listAll = null;
+
+		String select = "select u ";
+		String from = "from User u ";
+		String where = "";
+		String orderby = "order by u.nazwisko asc";
+
+		String nazwisko = (String) searchParams.get("nazwisko");
+		if (nazwisko != null) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "u.nazwisko like :nazwisko ";
+		}
+		
+
+		Query query = em.createQuery(select + from + where + orderby);
+
+		if (nazwisko != null) {
+			query.setParameter("nazwisko", nazwisko+"%");
+		}
+
+		try {
+			listAll = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return listAll;
+		
+	}
+	
+	
+	
+	public List<User> getFullList() {
+		List<User> list = null;
+
+		Query query = em.createQuery("select u from User u");
+
+		try {
+			list = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	public List<User> getList(Map<String, Object> searchParams) {
+		List<User> list = null;
+
+		String select = "select u ";
+		String from = "from User u ";
+		String where = "where Nazwa_roli = 'Doktor' ";
+		String orderby = "order by u.nazwisko asc";
+
+		String nazwisko = (String) searchParams.get("nazwisko");
+		if (nazwisko != null) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "u.nazwisko like :nazwisko ";
+		}
+		
+
+		Query query = em.createQuery(select + from + where + orderby);
+
+		if (nazwisko != null) {
+			query.setParameter("nazwisko", nazwisko+"%");
+		}
+
+		try {
+			list = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+		
+	}
+	
 }

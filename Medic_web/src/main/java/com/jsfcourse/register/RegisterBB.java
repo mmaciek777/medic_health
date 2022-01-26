@@ -1,13 +1,17 @@
 package com.jsfcourse.register;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.faces.simplesecurity.RemoteClient;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,27 +26,29 @@ public class RegisterBB {
 	private static final String PAGE_REGISTER = "/pages/register";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 	
-
-	private String login;
-	private String has³o;
+	
+	private String Login;
+	private String Has³o;
+	private String Imie;
+	private String Nazwisko;
+	private String Nazwa_roli;
+	private String Nr_budynku_User;
 	private Date Data_ostatniej_edycji;
 	private Date Data_rejestracji;
 	private String E_mail;
-	private String Imie;
-	private String Nazwisko;
-	private String Ulica;
-	private Integer Nr_budynku_User;
 	private String Kod_Pocztowy_User;
 	private String Miasto_User;
 	private String Nr_CRL;
 	private String PESEL;
-	private Integer Telefon;
+	private String Telefon;
 	private String Tytu³;
-	private String Ulica_user;
+	private String Ulica_User;
 	private Integer kto_utworzyl;
 	private Integer kto_zmodyfikowal;
-	private String Nazwa_roli;
+	private Date Od_Kiedy_rola_funkcjonuje;
+	private Date Do_Kiedy_rola_aktywna;
 
+	
 	public Date getData_ostatniej_edycji() {
 		return this.Data_ostatniej_edycji;
 	}
@@ -67,12 +73,28 @@ public class RegisterBB {
 		this.E_mail = e_mail;
 	}
 
-	public String getHas³o() {
-		return this.has³o;
+	public String getNazwisko() {
+		return this.Nazwisko;
 	}
 
-	public void setHas³o(String has³o) {
-		this.has³o = has³o;
+	public void setNazwisko(String nazwisko) {
+		this.Nazwisko = nazwisko;
+	}
+
+	public String getLogin() {
+		return this.Login;
+	}
+
+	public void setLogin(String Login) {
+		this.Login = Login;
+	}
+
+	public String getHas³o() {
+		return this.Has³o;
+	}
+
+	public void setHas³o(String Has³o) {
+		this.Has³o = Has³o;
 	}
 
 	public String getImie() {
@@ -82,15 +104,22 @@ public class RegisterBB {
 	public void setImie(String imie) {
 		this.Imie = imie;
 	}
+	public String getNazwa_roli() {
+		return Nazwa_roli;
+	}
+
+	public void setNazwa_roli(String nazwa_roli) {
+		this.Nazwa_roli = nazwa_roli;
+	}
 
 	public String getKod_Pocztowy_User() {
-		return this.getKod_Pocztowy_User();
+		return Kod_Pocztowy_User;
 	}
 
 	public void setKod_Pocztowy_User(String kod_Pocztowy_User) {
 		this.Kod_Pocztowy_User = kod_Pocztowy_User;
+		 
 	}
-
 	public Integer getKto_utworzyl() {
 		return this.kto_utworzyl;
 	}
@@ -107,14 +136,7 @@ public class RegisterBB {
 		this.kto_zmodyfikowal = kto_zmodyfikowal;
 	}
 
-	public String getLogin() {
-		return this.login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
+	
 	public String getMiasto_User() {
 		return this.Miasto_User;
 	}
@@ -123,19 +145,12 @@ public class RegisterBB {
 		this.Miasto_User = miasto_User;
 	}
 
-	public String getNazwisko() {
-		return this.Nazwisko;
+	
+	public String getNr_budynku_User() {
+		return Nr_budynku_User;
 	}
 
-	public void setNazwisko(String nazwisko) {
-		this.Nazwisko = nazwisko;
-	}
-
-	public int getNr_budynku_User() {
-		return this.Nr_budynku_User;
-	}
-
-	public void setNr_budynku_User(int nr_budynku_User) {
+	public void setNr_budynku_User(String nr_budynku_User) {
 		this.Nr_budynku_User = nr_budynku_User;
 	}
 
@@ -155,11 +170,11 @@ public class RegisterBB {
 		this.PESEL = pesel;
 	}
 
-	public int getTelefon() {
+	public String getTelefon() {
 		return this.Telefon;
 	}
 
-	public void setTelefon(int telefon) {
+	public void setTelefon(String telefon) {
 		this.Telefon = telefon;
 	}
 
@@ -170,34 +185,67 @@ public class RegisterBB {
 	public void setTytu³(String tytu³) {
 		this.Tytu³ = tytu³;
 	}
-
+	
 	public String getUlica_User() {
-		return this.Ulica_user;
+		return Ulica_User;
 	}
 
 	public void setUlica_User(String ulica_User) {
-		this.Ulica_user = ulica_User;
+		this.Ulica_User = ulica_User;
+	}
+	
+	
+	public Date getOd_Kiedy_rola_funkcjonuje() {
+		return Od_Kiedy_rola_funkcjonuje;
 	}
 
-	public String getNazwa_roli() {
-		return Nazwa_roli;
+	public void setOd_Kiedy_rola_funkcjonuje(Date Od_Kiedy_rola_funkcjonuje) {
+		this.Od_Kiedy_rola_funkcjonuje = Od_Kiedy_rola_funkcjonuje;
+	}
+	
+	public Date getDo_Kiedy_rola_aktywna() {
+		return Do_Kiedy_rola_aktywna;
 	}
 
-	public void setNazwa_roli(String nazwa_roli) {
-		this.Nazwa_roli = nazwa_roli;
+	public void setDo_Kiedy_rola_aktywna(Date Do_Kiedy_rola_aktywna) {
+		this.Do_Kiedy_rola_aktywna = Do_Kiedy_rola_aktywna;
 	}
+
+	@Inject
+	FacesContext context;
+	
+	@Inject
+	Flash flash;
 	
 	@EJB
-	UserDAO UserDAO;
-
-	public String goRegister() {
-		
-		return PAGE_REGISTER;
+	UserDAO userDAO;
+	
+	private User user = new User();
+	
+	public User getUser() {
+		return user;
 	}
 	
-	public String doRegister() {
-		return PAGE_MAIN;
-	}
+	public String saveData() {
+
+        try {
+            if (user.getIdUser() == null) {
+                
+            	userDAO.create(user);
+            	
+            } else {
+                
+            	userDAO.merge(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            context.addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wyst¹pi³ b³¹d podczas zapisu", null));
+            return PAGE_STAY_AT_THE_SAME;
+        }
+
+        return PAGE_MAIN;
+    }
 
 	
 	

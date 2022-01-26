@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+
+ 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/templates/page-template.xhtml">
+
+ <ui:define name="title">
+		#{textSzczepienie.name_page}
+	</ui:define>
+<ui:define name="content">
+
+	<p:panel toggleable="true" header="#{textSzczepienie.editing_record}" style="margin-top:5em;">
+
+		<h:form rendered="#{skierowanieEditBB.skierowanie != null}">
+			<h:panelGrid columns="1" cellpadding="5" style="font-size:20px;">
+			
+				<h:outputLabel style="color:black;" for="idSzczepionka" value="#{textPanel.vaccine}"/>
+                <h:selectOneMenu id="idSzczepionka" style="width:20%; background:#D3D3D3;" value="#{skierowanieEditBB.idSzczepionka}">
+                    <f:selectItems value="#{szczepionkaListBB.list}" var="szczepionka" itemValue="#{szczepionka.idSzczepionka}" itemLabel="#{szczepionka.nazwa_szczepionki}" />
+                </h:selectOneMenu>
+			
+				  <h:outputLabel style="display:inline-block !important; color:black;" for="s-pierwsza" value="#{textPanel.data1_ex}"/>
+				  <h:inputText style="width:20%; background:#D3D3D3;" id="s-pierwsza"  value="#{skierowanieEditBB.termin_Dawka_Pierwsza}" 
+				  			required="true"	requiredMessage="#{textRegister.podaj_date}"
+							validatorMessage="#{textRegister.invalid_date}">
+						<f:validateRegex pattern="^((20)[2][2])-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$"/>
+				  </h:inputText>
+    			 
+    			  <h:outputLabel style="display:inline-block !important; color:black;" for="s-druga" value="#{textPanel.data2_ex}"/>
+    			  <h:inputText style="width:20%; background:#D3D3D3;" id="s-druga"  value="#{skierowanieEditBB.termin_Dawka_Druga}"
+    			  			required="true"	requiredMessage="#{textRegister.podaj_date}"
+							validatorMessage="#{textRegister.invalid_date}">
+						<f:validateRegex pattern="^((20)[2][2])-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$"/>
+				  </h:inputText>
+    			 
+    			  <h:outputLabel style="display:inline-block !important; color:black;" for="s-trzecia" value="#{textPanel.data3_ex}"/>
+    			  <h:inputText style="width:20%; background:#D3D3D3;" id="s-trzecia"  value="#{skierowanieEditBB.termin_Dawka_Trzecia}"
+    			  			required="true"	requiredMessage="#{textRegister.podaj_date}"
+							validatorMessage="#{textRegister.invalid_date}">
+						<f:validateRegex pattern="^((20)[2][2])-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$"/>
+				  </h:inputText>
+    			  
+				<h:outputLabel style="color:black;" for="idUser" value="#{textPanel.doctor}"/>
+                <h:selectOneMenu id="idUser" style="width:20%; background:#D3D3D3;" value="#{skierowanieEditBB.idUser}">
+                    <f:selectItems value="#{adminListBB.list}" var="user" itemValue="#{user.idUser}" itemLabel="#{user.tytuł} #{user.imie} #{user.nazwisko}" />
+                </h:selectOneMenu>
+                
+            	 <h:outputLabel style="color:black; display:none; " for="idUser2" value="#{textPanel.patient}"/>
+                <h:selectOneMenu id="idUser2" style="width:20%; background:#D3D3D3; display:none;" value="#{skierowanieEditBB.idUser2}">
+                    <f:selectItem itemLabel="#{remoteClient.details.imie} #{remoteClient.details.nazwisko}" itemValue="#{remoteClient.details.idUser}"/>
+                </h:selectOneMenu>
+            	
+			</h:panelGrid>
+
+			<p:messages id="msgs" />
+
+			<p:commandButton value="#{textSzczepienie.save}" action="#{skierowanieEditBB.saveData()}"
+				style="margin-right: 1em;" update="@form" />
+
+			<p:button value="#{textSzczepienie.cancel}" outcome="szczepionkaList" />
+		</h:form>
+
+	</p:panel>
+           
+	</ui:define>
+</ui:composition>
+</html>

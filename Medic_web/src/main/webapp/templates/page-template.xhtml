@@ -26,10 +26,10 @@
 					<p:graphicImage name="img/nurse2.jpg" library="template" class="image fit main" />
 					
 					<div class="content">
-							<h2>Wykwalifikowany lekarze pomogą Państwu zapisać się na szczepienia przeciw COVID-19!</h2>
-							<p>Doradzą Państwu oraz rozwieją wszelkie niejasności! Kliknij w zakładkę "Szczepienia" i dowiedz się więcej!</p>
+							<h2>#{textMain.qualified_workers}</h2>
+							<p>#{textMain.qualified_workers2}</p>
 						<ul class="actions">
-							<li><a href="pages/szczepienia.xhtml" class="button">Kliknij tutaj, aby przejść do szczepień</a></li>
+							<li ><h:outputLink class="button" style="margin-top:1em;font-size:19px;margin-left:2em;" value = "szczepionkaList.xhtml" >#{textMain.button1}</h:outputLink>  </li>
 						</ul>
 					</div>
 					
@@ -40,11 +40,11 @@
 					<p:graphicImage name="img/doctor2.jpg" library="template" class="image fit main" />
 					 <div class="content">
 						
-							<h2>Tysiące zleconych szczepień, które pozwalają nam na normalniejsze życie!</h2>
-							<p>Już teraz wejdź w zakładkę "Szczepienia" i dowiedz się więcej!</p>
+							<h2>#{textMain.normal_life}</h2>
+							<p>#{textMain.normal_life2}</p>
 						
 						<ul class="actions">
-							<li><a href="pages/szczepienia.xhtml" class="button">Kliknij tutaj, aby przejść do szczepień</a></li>
+							<li><h:outputLink class="button" style="margin-top:1em;font-size:19px;margin-left:2em;" value = "szczepionkaList.xhtml" >#{textMain.button1}</h:outputLink>  </li>
 						</ul>
 					</div>
 					 
@@ -56,28 +56,28 @@
 					<div class="container">
 					
 							
-							<h2><p>"Primum non nocere" - Po pierwsze nie szkodzić</p></h2>
+							<h2><p>#{textMain.phrase}</p></h2>
 						
 						<div class="box">
 							<div class="row">
 								<div class="col-4 col-3-medium col-12-xsmall">
 									<p:outputPanel class="icon solid alt major "/>
-									<h3>Ponad 50.000 pacjentów </h3>
+									<h3>#{textMain.under_phrase1} </h3>
 								</div>
 								<div class="col-4 col-3-medium col-12-xsmall">
 									<p:outputPanel class="icon solid alt major "/>
-									<h3>Liczne nagrody w dziedzinie szczepień</h3>
+									<h3>#{textMain.under_phrase2}</h3>
 								</div>
 								<div class="col-4 col-3-medium col-12-xsmall">
 									<p:outputPanel class="icon solid alt major "/>
-									<h3>Liczne opinie naszych pacjentów, które ukształtowały MedicHealth</h3>
+									<h3>#{textMain.under_phrase3}</h3>
 								</div>
 								
 							</div>
 						</div>
 						<div class="major">
 							<ul class="actions special">
-								<li><a href="pages/contact.xhtml" class="button ">Kliknij tutaj, aby uzyskać kontakt</a></li>
+								<li><h:outputLink class="button" style="margin-top:1em;font-size:19px;margin-left:2em;" value = "contact.xhtml" >#{textMain.button_2}</h:outputLink>  </li>
 							</ul>
 						</div>
 					</div>
